@@ -1,5 +1,10 @@
+package algorithmanalysis;
+
 import java.io.*;
 import java.util.Random;
+import java.util.Arrays;
+
+import binarysearch.BinarySearch;
 
 public class ThreeSum
 {
@@ -19,6 +24,22 @@ public class ThreeSum
 		return cnt;
 	}
 
+	public static int countFast(int[] b)
+	{
+		int N = b.length;
+		int cnt = 0;
+		Arrays.sort(b);
+		for (int i=0; i<N; i++) {
+			for (int j=i+1; j<N; j++) {
+				// make sure new "k" is greater than 'j' to avoid double counting
+				if (BinarySearch.rank(-b[i]-b[j], b) > j) {
+					cnt++;
+				}
+			}
+		}
+		return cnt;
+	}
+
 	public static void main(String[] args) throws FileNotFoundException
 	{
 		int N = Integer.parseInt(args[0]);
@@ -29,10 +50,16 @@ public class ThreeSum
 			a[i] = rand.nextInt(2000000)-1000000; // generates rand int between -1000000 and 1000000
 		}
 
+		// with count method
 		long start = System.currentTimeMillis();
 		int c = count(a);
 		long finish = System.currentTimeMillis();
+		System.out.println(c + " triples " + (finish - start)/1000.0 + " seconds with count");
 
-		System.out.println(c + " triples " + (finish - start)/1000.0 + " seconds");
+		// with countFast method
+		long start2 = System.currentTimeMillis();
+		int c2 = countFast(a);
+		long finish2 = System.currentTimeMillis();
+		System.out.println(c2 + " triples " + (finish2 - start2)/1000.0 + " seconds with countFast");
 	}
 }

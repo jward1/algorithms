@@ -1,4 +1,5 @@
-// BagQueueStack/Bag.java
+package bagstackqueue;
+
 import java.util.Iterator;
 
 public class Bag<Item> implements Iterable<Item>

@@ -1,4 +1,4 @@
-// BagQueueStack/Queue.java
+package bagstackqueue;
 
 import java.util.Iterator;
 
