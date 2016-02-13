@@ -9,17 +9,20 @@ import binarysearch.BinarySearch;
 
 public class ThreeSum
 {	
-	private static final int BOUND = 100000;
+	private static final int BOUND = 1000000;
 	
 	private static int[] genRandomUniqueIntArray(int sz)
 	{
-		int[] randUniq = new int[sz];
-
+		int[] randUniq = new int[sz]; 
+		// create a list of integers from lower bound to upper bound
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		for (int i=-BOUND; i<=BOUND; i++){
 			list.add(new Integer(i));
 		}
-		Collections.shuffle(list); // can also specify source of randomness, if wanted
+		// randomly shuffle the list; can also create a Random object 
+		// if you want to specify the source of randomness
+		Collections.shuffle(list);
+		// grab the first N numbers to get a random, unique list of ints
 		for (int j=0; j<sz; j++) {
 			randUniq[j] = list.get(j);
 		}
@@ -28,17 +31,17 @@ public class ThreeSum
 
 	public static int count(int[] b)
 	{
+		// BRUTE FORCE SEARCH
+		// runs in N^3 time
+
 		int N = b.length;
 		int cnt = 0; // number of triples that sum to zero
-		for (int i = 0; i<N; i++) {
-			for (int j=i+1; j<N; j++) {
-				for (int k=j+1; k<N; k++) {
-					if (b[i] + b[j] + b[k] == 0) {
-						cnt++;
-					}
-				}
-			}
-		}
+		
+		// brute force search
+		for (int i = 0; i<N; i++) 
+			for (int j=i+1; j<N; j++) 
+				for (int k=j+1; k<N; k++) 
+					if (b[i] + b[j] + b[k] == 0) { cnt++; }
 		return cnt;
 	}
 
@@ -46,31 +49,43 @@ public class ThreeSum
 	{
 		int N = b.length;
 		int cnt = 0;
-		Arrays.sort(b);
-		for (int i=0; i<N; i++) {
-			for (int j=i+1; j<N; j++) {
-				// make sure new "k" is greater than 'j' to avoid double counting
-				if (BinarySearch.rank(-b[i]-b[j], b) > j) {
-					cnt++;
-				}
-			}
-		}
+		Arrays.sort(b); // array must be sorted in order to use BinarySearch
+		for (int i=0; i<N; i++)
+			for (int j=i+1; j<N; j++)
+				// make sure new "k" is greater than 'j'
+				if (BinarySearch.rank(-b[i]-b[j], b) > j) { cnt++; }
 		return cnt;
 	}
+
 
 	public static int countFasterStill(int[] b)
 	{
 		int N = b.length;
 		int cnt = 0;
 		Arrays.sort(b);
-		int ix = N - 1; //start search index in last element of array
-		for (int i=0; i<N; i++){
-			while (ix >= 0 - b[i] ){
-				if (b[i] - b[ix] == 0) { 
-					cnt++; 
-				}
-				ix++;
+		
+		for (int i=0; i<N; i++)
+		{ 
+			int k = N - 1;
+			
+			for (int j=i+1; j<N; j++)
+			{
+				/*
+				System.out.println("i: " + i);
+				System.out.println("j: " + j);
+				System.out.println("k: " + k);
+				System.out.println("i: " + i + " b[i]: " + b[i]);
+				System.out.println("j: " + j + " b[j]: " + b[j]);
+				System.out.println("k: " + k + " b[k]: " + b[k]);
+				int temp = b[i] + b[j] + b[k];
+				System.out.println("sum: " + temp);
+				System.out.println();
+				*/
+				
+				while ( (b[k] > -(b[i] + b[j])) && (j < k) ) { k--; }
+				if (b[i] + b[j] + b[k] == 0 ) { cnt++; }
 			}
+
 		}
 		return cnt;
 	}
@@ -78,11 +93,6 @@ public class ThreeSum
 	public static void main(String[] args) throws IllegalArgumentException
 	{
 		int N = Integer.parseInt(args[0]);
-
-		if (N > BOUND) { 
-			throw new IllegalArgumentException("Please enter a number smaller than " + BOUND); 
-		}
-
 		int[] a = genRandomUniqueIntArray(N);
 
 		// with count method
@@ -99,7 +109,7 @@ public class ThreeSum
 
 		// with countFasterStill method
 		long start3 = System.currentTimeMillis();
-		int c3 = countFast(a);
+		int c3 = countFasterStill(a);
 		long finish3 = System.currentTimeMillis();
 		System.out.println(c3 + " triples " + (finish3 - start3)/1000.0 + " seconds with countFasterStill");
 	}
