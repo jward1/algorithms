@@ -3,12 +3,12 @@ package unionfind;
 import java.util.Scanner;
 import performance.Stopwatch;
 
-public class UFQuickFind implements UF
+public class UFQuickUnion implements UF 
 {
 	private int[] id;  // access to component id
 	private int num; // number of components
 
-	public UFQuickFind(int N)
+	public UFQuickUnion(int N)
 	{
 		this.num = N;
 		this.id = new int[N];
@@ -18,20 +18,17 @@ public class UFQuickFind implements UF
 
 	public void union(int p, int q)
 	{
-		int pID = find(p);
-		int qID = find(q);
-
-		if (pID == qID) { return; }
-
-		for (int i=0; i<this.id.length; i++)
-			if (this.id[i] == pID) { this.id[i] = qID; }
-
+		int i = find(p);
+		int j = find(q);
+		if (i == j) return; 
+		id[i] = j;
 		this.num--;
 	}
 
 	public int find(int p)
 	{
-		return this.id[p];
+		while (p != id[p]) p = id[p];
+		return p;
 	}
 
 	public boolean connected(int p, int q) { return find(p) == find(q); }
@@ -43,7 +40,7 @@ public class UFQuickFind implements UF
 		int N = in.nextInt(); // get number of sites to read
 
 		Stopwatch timer = new Stopwatch(); // starts timer
-		UF uf = new UFQuickFind(N);
+		UF uf = new UFQuickUnion(N);
 		while(in.hasNextInt())
 		{
 			int p = in.nextInt();
