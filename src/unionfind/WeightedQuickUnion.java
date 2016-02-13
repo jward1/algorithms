@@ -8,9 +8,10 @@ public class WeightedQuickUnion implements UF
 	private int[] id;  // access to component id
 	private int[] sz;  // size of associated component
 	private int num;   // number of components
-
+	
 	public WeightedQuickUnion(int N)
 	{
+		if (N < 0) { throw new IllegalArgumentException(); }
 		num = N;
 		id = new int[N];
 		sz = new int[N];
@@ -39,12 +40,21 @@ public class WeightedQuickUnion implements UF
 
 	public int find(int p)
 	{
+		validate(p);
 		while (p != id[p]) p = id[p];
 		return p;
 	}
 
 	public boolean connected(int p, int q) { return find(p) == find(q); }
 	public int count() { return num; }
+
+	private void validate(int p) throws IndexOutOfBoundsException
+	{
+		int N = id.length;
+		if (p < 0 || p >= N) {
+			throw new IndexOutOfBoundsException("Index " + p + " is not between 0 and " + (N-1));
+		}
+	}
 
 	public static void main(String[] args)
 	{
