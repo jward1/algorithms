@@ -10,5 +10,5 @@ Be sure to create a 'bin' directory in your 'algorithms' directory for all of th
 
 To run the program, run the following from your Terminal:
 ```
-java -classpath bin unionfind.WeightedQuickUnion < mediumUF.txt
+java -classpath bin unionfind.WeightedQuickUnion < data/mediumUF.txt
 ```
