@@ -1,5 +1,8 @@
 package elementarysorts;
 
+import java.util.Scanner;
+import java.util.ArrayList;
+
 public class Insertion
 {
 	/*
@@ -48,6 +51,20 @@ public class Insertion
 
 	public static void main(String[] args)
 	{
+		Scanner sc = new Scanner(System.in);
+		ArrayList<String> l = new ArrayList<String>();
+		while ( sc.hasNext() )
+		{
+			l.add(sc.next());
+		}
+
+		String[] test = l.toArray(new String[l.size()]);
+		show(test);
+		sort(test);
+		assert isSorted(test);
+		show(test);
+
+		/*
 		String[] test1 = {"E", "X", "A", "M", "P", "L", "E"};
 		sort(test1);
 		assert isSorted(test1);
@@ -62,5 +79,6 @@ public class Insertion
 		sort(test3);
 		assert isSorted(test3);
 		show(test3);
+		*/
 	}
 }
