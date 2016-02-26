@@ -13,10 +13,14 @@ public class Insertion
 		int N = a.length;
 		for (int i=1; i<N; i++)
 		{
-			for (int j=i; j>0 && less(a[j], a[j-1]); j-- )
+			Comparable temp = a[i];
+			int ix = i;
+			for (int j=i-1; j>=0 && less(temp, a[j]); j-- )
 			{
-				exch(a, j, j-1);
+				a[j+1] = a[j];
+				ix = j;
 			}
+			a[ix] = temp;
 		}
 	}
 
@@ -64,7 +68,7 @@ public class Insertion
 		assert isSorted(test);
 		show(test);
 
-		/*
+		
 		String[] test1 = {"E", "X", "A", "M", "P", "L", "E"};
 		sort(test1);
 		assert isSorted(test1);
@@ -79,6 +83,6 @@ public class Insertion
 		sort(test3);
 		assert isSorted(test3);
 		show(test3);
-		*/
+		/**/
 	}
 }
