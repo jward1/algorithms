@@ -1,10 +1,10 @@
-* Performance package
+# Performance package
 These classes were created to help compare various algorithms. All terminal commands are run from the parent directory ('algorithms').
 
-** Stopwatch
+## Stopwatch
 Used to calculate runtime.
 
-** SortCompare
+## SortCompare
 Used to compare to sorting methods. To use:
 ```
 java -classpath bin performance.SortCompare <sorting algorithm 1> <sorting algorithm 2> <length of array to sort> <number of trials>
