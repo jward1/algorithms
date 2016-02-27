@@ -15,42 +15,13 @@ public class Insertion
 		{
 			Comparable temp = a[i];
 			int ix = i;
-			for (int j=i-1; j>=0 && less(temp, a[j]); j-- )
+			for (int j=i-1; j>=0 && ElementarySort.less(temp, a[j]); j-- )
 			{
 				a[j+1] = a[j];
 				ix = j;
 			}
 			a[ix] = temp;
 		}
-	}
-
-	private static boolean less(Comparable v, Comparable w)
-	{ 
-		return v.compareTo(w) < 0 ;
-	}
-
-	private static void exch(Comparable[] a, int v, int w)
-	{
-		Comparable temp = a[v];
-		a[v] = a[w];
-		a[w] = temp;
-	}
-
-	public static boolean isSorted(Comparable[] a)
-	{
-		for (int i=1; i<a.length; i++) 
-		{
-			if (less(a[i], a[i-1])) { return false; }
-		}
-		return true;
-	}
-
-	public static void show(Comparable[] a)
-	{
-		for (int i=0; i<a.length; i++){
-			System.out.print(a[i] + " ");
-		}
-		System.out.println();
 	}
 
 	public static void main(String[] args)
@@ -63,26 +34,25 @@ public class Insertion
 		}
 
 		String[] test = l.toArray(new String[l.size()]);
-		show(test);
+		ElementarySort.show(test);
 		sort(test);
-		assert isSorted(test);
-		show(test);
+		assert ElementarySort.isSorted(test);
+		ElementarySort.show(test);
 
 		
 		String[] test1 = {"E", "X", "A", "M", "P", "L", "E"};
 		sort(test1);
-		assert isSorted(test1);
-		show(test1);
+		assert ElementarySort.isSorted(test1);
+		ElementarySort.show(test1);
 
 		Integer[] test2 = { 2, 3, 8, 4, 9, 5, 1};
 		sort(test2);
-		assert isSorted(test2);
-		show(test2);
+		assert ElementarySort.isSorted(test2);
+		ElementarySort.show(test2);
 
 		String[] test3 = { "bbb", "zzz", "ccc", "ddd", "eee"};
 		sort(test3);
-		assert isSorted(test3);
-		show(test3);
-		/**/
+		assert ElementarySort.isSorted(test3);
+		ElementarySort.show(test3);
 	}
 }

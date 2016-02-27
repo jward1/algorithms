@@ -2,6 +2,7 @@ package performance;
 
 import elementarysorts.Insertion;
 import elementarysorts.Selection;
+import elementarysorts.Shell;
 
 import java.util.Random;
 
@@ -12,6 +13,7 @@ public class SortCompare
 		Stopwatch timer = new Stopwatch(); // starts timer
 		if (alg.equals("Insertion")) Insertion.sort(a);
 		if (alg.equals("Selection")) Selection.sort(a);
+		if (alg.equals("Shell")) 	 Shell.sort(a);
 		return timer.elapsedTime();
 	}
 
@@ -45,7 +47,7 @@ public class SortCompare
 		System.out.printf("%s took an average of %.3f seconds\n", algo1, t1/T);
 		System.out.printf("%s took an average of %.3f seconds\n", algo2, t2/T);
 		if ( t1 < t2 ) {
-			System.out.printf("%s is %.2f times faster than %s\n", algo1, t1/t2, algo2);
+			System.out.printf("%s is %.2f times faster than %s\n", algo1, t2/t1, algo2);
 		} else {
 			System.out.printf("%s is %.2f times faster than %s\n", algo2, t1/t2, algo1);
 		}
