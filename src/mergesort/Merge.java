@@ -6,6 +6,13 @@ public class Merge
 {
 	private static Comparable[] aux;
 
+	/*
+	 * Merge sort. Takes sorts arrays of a datatype that implements the Comparable
+	 * class (e.g., String, Interger, Double). This implementation uses a top-down
+	 * approach and uses an auxillary array to help in the sorting. That is, it takes
+	 * twice the Memory as sorting the array in-place. It runs NlogN.
+	 * @params a Takes an (unsorted) array of a Comparable data type
+	 */
 	public static void sort(Comparable[] a)
 	{
 		aux = new Comparable[a.length]; // allocates space for auxillary array
@@ -21,7 +28,7 @@ public class Merge
 		merge(a, lo, mid, hi);
 	}
 
-	public static void merge(Comparable[] a, int lo, int mid, int hi)
+	private static void merge(Comparable[] a, int lo, int mid, int hi)
 	{
 		int i = lo;
 		int j = mid+1;
