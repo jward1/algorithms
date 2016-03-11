@@ -1,6 +1,6 @@
 package mergesort;
 
-import elementarysorts.ElementarySort;
+import tools.Tools;
 
 public class MergeBottomUp
 {
@@ -20,7 +20,7 @@ public class MergeBottomUp
 		{
 			if (i > mid) { a[k] = aux[j++]; } // left array is exhausted
 			else if (j > hi) { a[k] = aux[i++]; } // right array is exhausted
-			else if (ElementarySort.less(aux[i], aux[j])) { a[k] = aux[i++]; }
+			else if (Tools.less(aux[i], aux[j])) { a[k] = aux[i++]; }
 			else { a[k] = aux[j++]; }
 		}
 	}
@@ -38,6 +38,6 @@ public class MergeBottomUp
 	{
 		String[] test = {"zzz", "aaa", "yyy", "bbb", "xxx", "ccc", "www", "ddd"};
 		sort(test);
-		ElementarySort.show(test);
+		Tools.show(test);
 	}
 }

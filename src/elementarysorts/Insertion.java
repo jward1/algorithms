@@ -3,6 +3,8 @@ package elementarysorts;
 import java.util.Scanner;
 import java.util.ArrayList;
 
+import tools.Tools;
+
 public class Insertion
 {
 	/*
@@ -15,7 +17,7 @@ public class Insertion
 		{
 			Comparable temp = a[i];
 			int ix = i;
-			for (int j=i-1; j>=0 && ElementarySort.less(temp, a[j]); j-- )
+			for (int j=i-1; j>=0 && Tools.less(temp, a[j]); j-- )
 			{
 				a[j+1] = a[j];
 				ix = j;
@@ -34,25 +36,25 @@ public class Insertion
 		}
 
 		String[] test = l.toArray(new String[l.size()]);
-		ElementarySort.show(test);
+		Tools.show(test);
 		sort(test);
-		assert ElementarySort.isSorted(test);
-		ElementarySort.show(test);
+		assert Tools.isSorted(test);
+		Tools.show(test);
 
 		
 		String[] test1 = {"E", "X", "A", "M", "P", "L", "E"};
 		sort(test1);
-		assert ElementarySort.isSorted(test1);
-		ElementarySort.show(test1);
+		assert Tools.isSorted(test1);
+		Tools.show(test1);
 
 		Integer[] test2 = { 2, 3, 8, 4, 9, 5, 1};
 		sort(test2);
-		assert ElementarySort.isSorted(test2);
-		ElementarySort.show(test2);
+		assert Tools.isSorted(test2);
+		Tools.show(test2);
 
 		String[] test3 = { "bbb", "zzz", "ccc", "ddd", "eee"};
 		sort(test3);
-		assert ElementarySort.isSorted(test3);
-		ElementarySort.show(test3);
+		assert Tools.isSorted(test3);
+		Tools.show(test3);
 	}
 }

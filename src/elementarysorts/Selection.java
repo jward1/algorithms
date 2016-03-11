@@ -1,5 +1,7 @@
 package elementarysorts;
 
+import tools.Tools;
+
 public class Selection
 {	
 	/*
@@ -13,13 +15,13 @@ public class Selection
 			int min_ix = i;
 			for (int j = i+1; j<a.length; j++)
 			{
-				if (ElementarySort.less( a[j], min) )
+				if (Tools.less( a[j], min) )
 				{
 					min_ix = j;
 					min = a[j];
 				}
 			}
-			ElementarySort.exch(a, min_ix, i);
+			Tools.exch(a, min_ix, i);
 		}
 	}
 
@@ -27,12 +29,12 @@ public class Selection
 	{
 		String[] test1 = {"S", "O", "R", "T"};
 		sort(test1);
-		assert ElementarySort.isSorted(test1);
-		ElementarySort.show(test1);
+		assert Tools.isSorted(test1);
+		Tools.show(test1);
 
 		Integer[] test2 = { 2, 3, 8, 4, 9, 5, 1};
 		sort(test2);
-		assert ElementarySort.isSorted(test2);
-		ElementarySort.show(test2);
+		assert Tools.isSorted(test2);
+		Tools.show(test2);
 	}
 }

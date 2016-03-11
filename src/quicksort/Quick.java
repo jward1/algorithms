@@ -1,7 +1,7 @@
 package quicksort;
 
 import java.util.Random;
-import elementarysorts.ElementarySort;
+import tools.Tools;
 
 public class Quick 
 {
@@ -34,16 +34,16 @@ public class Quick
 		while (true)
 		{
 			// scan from left
-			while (ElementarySort.less(a[++i], val)) if (i==hi) break;
+			while (Tools.less(a[++i], val)) if (i==hi) break;
 			// scan from right
-			while (ElementarySort.less(val, a[--j])) if (j==lo) break;
+			while (Tools.less(val, a[--j])) if (j==lo) break;
 			// make sure i cursor has not passed j cursor
 			if (i >= j) break;
 			// exchange ith and jth values
-			ElementarySort.exch(a, i, j);
+			Tools.exch(a, i, j);
 		}
 		// swap value to the jth position
-		ElementarySort.exch(a, lo, j);
+		Tools.exch(a, lo, j);
 		return j;
 	}
 
@@ -70,11 +70,11 @@ public class Quick
 	{
 		String[] test = {"zzz", "yyy", "xxx", "www", "ddd", "ccc", "bbb", "aaa"};
 		sort(test);
-		ElementarySort.show(test);
+		Tools.show(test);
 
 		Integer[] test2 = {1, 4, 6, 3, 8, 10, 12, 0, -4};
 		sort(test2);
-		ElementarySort.show(test2);
+		Tools.show(test2);
 	}
 
 }

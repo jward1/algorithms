@@ -1,7 +1,7 @@
 package unionfind;
 
 import java.util.Scanner;
-import performance.Stopwatch;
+import tools.Stopwatch;
 
 public class UFQuickUnion implements UF 
 {

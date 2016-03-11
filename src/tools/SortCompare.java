@@ -1,4 +1,4 @@
-package performance;
+package tools;
 
 import elementarysorts.Insertion;
 import elementarysorts.Selection;

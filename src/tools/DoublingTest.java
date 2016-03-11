@@ -1,4 +1,4 @@
-package performance;
+package tools;
 
 /*
  * NEED TO IMPORT OBJECT YOU WANT TO RUN TEST ON

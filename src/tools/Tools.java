@@ -1,6 +1,6 @@
-package elementarysorts;
+package tools;
 
-public class ElementarySort
+public class Tools
 {
 	public static boolean less(Comparable v, Comparable w)
 	{ 
