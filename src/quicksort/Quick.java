@@ -6,11 +6,11 @@ import elementarysorts.ElementarySort;
 public class Quick 
 {
 	/**
-     * Sorts the elements of the specifiec array in ascending order.
-     *
-     * @param  a the array of a Comparable data type to be sorted
-     * @throws NullPointerException if <tt>a</tt> is <tt>null</tt>
-     */
+	 * Sorts the elements of the specifiec array in ascending order.
+	 *
+	 * @param  a the array of a Comparable data type to be sorted
+	 * @throws NullPointerException if <tt>a</tt> is <tt>null</tt>
+	 */
 	public static void sort(Comparable[] a)
 	{
 		shuffle(a); // shuffle array to ensure against worst-case performance
@@ -30,7 +30,7 @@ public class Quick
 		int i = lo;
 		int j = hi+1;
 		Comparable val = a[lo];
-	
+
 		while (true)
 		{
 			// scan from left
@@ -48,23 +48,23 @@ public class Quick
 	}
 
 
-    /**
-     * Rearranges the elements of the specified array in uniformly random order.
-     *
-     * @param  a the array to shuffle
-     * @throws NullPointerException if <tt>a</tt> is <tt>null</tt>
-     */
-    private static void shuffle(Comparable[] a) {
-        if (a == null) throw new NullPointerException("argument array is null");
-        Random rand = new Random();
-        int n = a.length;
-        for (int i = 0; i < n; i++) {
-            int r = i + rand.nextInt(n-i);  // between i and n-1
-            Comparable temp = a[i];
-            a[i] = a[r];
-            a[r] = temp;
-        }
-    }
+	/**
+	 * Rearranges the elements of the specified array in uniformly random order.
+	 *
+	 * @param  a the array to shuffle
+	 * @throws NullPointerException if <tt>a</tt> is <tt>null</tt>
+	 */
+	private static void shuffle(Comparable[] a) {
+	    if (a == null) throw new NullPointerException("argument array is null");
+	    Random rand = new Random();
+	    int n = a.length;
+	    for (int i = 0; i < n; i++) {
+	        int r = i + rand.nextInt(n-i);  // between i and n-1
+	        Comparable temp = a[i];
+	        a[i] = a[r];
+	        a[r] = temp;
+	    }
+	}
 
 	public static void main(String[] arsgs)
 	{
@@ -76,10 +76,5 @@ public class Quick
 		sort(test2);
 		ElementarySort.show(test2);
 	}
-
-
-
-
-
 
 }
