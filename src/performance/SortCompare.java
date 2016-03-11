@@ -5,6 +5,7 @@ import elementarysorts.Selection;
 import elementarysorts.Shell;
 import mergesort.Merge;
 import mergesort.MergeBottomUp;
+import quicksort.Quick;
 
 import java.util.Random;
 
@@ -18,6 +19,7 @@ public class SortCompare
 		if (alg.equals("Shell")) 	 Shell.sort(a);
 		if (alg.equals("Merge"))	 Merge.sort(a);
 		if (alg.equals("MergeBottomUp")) MergeBottomUp.sort(a);
+		if (alg.equals("Quick")) Quick.sort(a);
 		return timer.elapsedTime();
 	}
 
