@@ -1,5 +1,7 @@
 package tools;
 
+import java.util.Random;
+
 public class Tools
 {
 	public static boolean less(Comparable v, Comparable w)
@@ -29,5 +31,23 @@ public class Tools
 			System.out.print(a[i] + " ");
 		}
 		System.out.println();
+	}
+
+	/**
+	 * Rearranges the elements of the specified array in uniformly random order.
+	 *
+	 * @param  a the array to shuffle
+	 * @throws NullPointerException if <tt>a</tt> is <tt>null</tt>
+	 */
+	public static void shuffle(Comparable[] a) {
+	    if (a == null) throw new NullPointerException("argument array is null");
+	    Random rand = new Random();
+	    int n = a.length;
+	    for (int i = 0; i < n; i++) {
+	        int r = i + rand.nextInt(n-i);  // between i and n-1
+	        Comparable temp = a[i];
+	        a[i] = a[r];
+	        a[r] = temp;
+	    }
 	}
 }

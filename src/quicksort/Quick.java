@@ -13,7 +13,7 @@ public class Quick
 	 */
 	public static void sort(Comparable[] a)
 	{
-		shuffle(a); // shuffle array to ensure against worst-case performance
+		Tools.shuffle(a); // shuffle array to ensure against worst-case performance
 		sort(a, 0, a.length-1);
 	}
 
@@ -45,25 +45,6 @@ public class Quick
 		// swap value to the jth position
 		Tools.exch(a, lo, j);
 		return j;
-	}
-
-
-	/**
-	 * Rearranges the elements of the specified array in uniformly random order.
-	 *
-	 * @param  a the array to shuffle
-	 * @throws NullPointerException if <tt>a</tt> is <tt>null</tt>
-	 */
-	private static void shuffle(Comparable[] a) {
-	    if (a == null) throw new NullPointerException("argument array is null");
-	    Random rand = new Random();
-	    int n = a.length;
-	    for (int i = 0; i < n; i++) {
-	        int r = i + rand.nextInt(n-i);  // between i and n-1
-	        Comparable temp = a[i];
-	        a[i] = a[r];
-	        a[r] = temp;
-	    }
 	}
 
 	public static void main(String[] arsgs)
