@@ -7,6 +7,7 @@ import mergesort.Merge;
 import mergesort.MergeBottomUp;
 import quicksort.Quick;
 import quicksort.Quick3way;
+import priorityqueues.Heapsort;
 
 import java.util.Random;
 
@@ -22,6 +23,7 @@ public class SortCompare
 		if (alg.equals("MergeBottomUp")) MergeBottomUp.sort(a);
 		if (alg.equals("Quick")) Quick.sort(a);
 		if (alg.equals("Quick3way")) Quick3way.sort(a);
+		if (alg.equals("Heapsort")) Heapsort.sort(a);
 		return timer.elapsedTime();
 	}
 
